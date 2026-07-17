@@ -52,16 +52,6 @@ class _Splash extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: AppTheme.coral,
-                borderRadius: BorderRadius.circular(24),
-              ),
-              child: const Icon(Icons.rocket_launch_rounded,
-                  color: Colors.white, size: 44),
-            ),
-            const SizedBox(height: 20),
             const Text(
               'Stint',
               style: TextStyle(

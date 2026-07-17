@@ -58,16 +58,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(14),
-                      decoration: BoxDecoration(
-                        color: AppTheme.coral,
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                      child: const Icon(Icons.rocket_launch_rounded,
-                          color: Colors.white, size: 30),
-                    ),
-                    const SizedBox(height: 18),
                     const Text(
                       'Stint',
                       style: TextStyle(
