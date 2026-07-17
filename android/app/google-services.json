@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "626921373428",
+    "project_id": "formative2-42a33",
+    "storage_bucket": "formative2-42a33.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626921373428:android:65a8130c4e76ce172368a1",
+        "android_client_info": {
+          "package_name": "com.alu.launchpad"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-pjQdpPv8lnegHIgN3FWfFrOvMHTenEg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

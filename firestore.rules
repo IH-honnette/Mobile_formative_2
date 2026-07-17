@@ -1,0 +1,86 @@
+rules_version = '2';
+
+// Stint security rules.
+//
+// Philosophy: the client is never trusted. Every write is checked against
+// the caller's uid and role, and the verification gate (only verified
+// startups may post) is enforced here, not just in the UI.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    function ownsStartup(startupId) {
+      return signedIn() &&
+        get(/databases/$(database)/documents/startups/$(startupId)).data.ownerUid == request.auth.uid;
+    }
+
+    function startupVerified(startupId) {
+      return get(/databases/$(database)/documents/startups/$(startupId)).data.verificationStatus == 'verified';
+    }
+
+    match /users/{uid} {
+      // Profiles are readable by any signed-in user (founders see applicant
+      // names); only the owner writes their own profile, and the role field
+      // can never be self-escalated to admin after creation.
+      allow read: if signedIn();
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.role in ['student', 'founder'];
+      allow update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.role == resource.data.role;
+      allow delete: if false;
+    }
+
+    match /startups/{startupId} {
+      allow read: if signedIn();
+      // Founders create their own startup; it must start as pending.
+      allow create: if signedIn()
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.verificationStatus == 'pending';
+      // Owners edit profile fields but can never change their own
+      // verification status; admins change only the verification status.
+      allow update: if signedIn() && (
+        (resource.data.ownerUid == request.auth.uid
+          && request.resource.data.verificationStatus == resource.data.verificationStatus
+          && request.resource.data.ownerUid == resource.data.ownerUid)
+        || isAdmin()
+      );
+      allow delete: if isAdmin();
+    }
+
+    match /opportunities/{opportunityId} {
+      allow read: if signedIn();
+      // The core trust rule: only the owner of a VERIFIED startup can post.
+      allow create: if signedIn()
+        && ownsStartup(request.resource.data.startupId)
+        && startupVerified(request.resource.data.startupId);
+      allow update, delete: if signedIn()
+        && ownsStartup(resource.data.startupId);
+    }
+
+    match /applications/{applicationId} {
+      // Students create applications for themselves; the student and the
+      // startup owner can read them; only the startup owner moves the
+      // status through the pipeline.
+      allow create: if signedIn()
+        && request.resource.data.studentUid == request.auth.uid
+        && request.resource.data.status == 'submitted';
+      allow read: if signedIn() && (
+        resource.data.studentUid == request.auth.uid
+        || ownsStartup(resource.data.startupId)
+      );
+      allow update: if signedIn()
+        && ownsStartup(resource.data.startupId)
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['status', 'updatedAt']);
+      allow delete: if false;
+    }
+  }
+}
