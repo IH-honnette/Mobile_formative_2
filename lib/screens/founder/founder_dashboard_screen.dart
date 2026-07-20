@@ -11,9 +11,6 @@ import '../../widgets/empty_state.dart';
 import '../../widgets/status_badge.dart';
 import 'post_opportunity_screen.dart';
 
-/// The founder's postings list with full CRUD: create (FAB), edit, close
-/// and delete. Posting is gated on verification — the trust rule that
-/// defines the platform.
 class FounderDashboardScreen extends StatelessWidget {
   const FounderDashboardScreen({super.key});
 

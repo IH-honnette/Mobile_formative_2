@@ -4,8 +4,6 @@ import '../models/application.dart';
 import '../models/startup.dart';
 import '../theme/app_theme.dart';
 
-/// Small colored pill used everywhere a status appears, so the same status
-/// always looks the same (application pipeline + startup verification).
 class StatusBadge extends StatelessWidget {
   final String label;
   final Color color;

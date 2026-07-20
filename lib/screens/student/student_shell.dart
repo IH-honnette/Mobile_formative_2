@@ -6,8 +6,6 @@ import 'discover_screen.dart';
 import 'my_applications_screen.dart';
 import 'student_profile_screen.dart';
 
-/// Bottom-navigation shell for the student experience.
-/// IndexedStack keeps each tab's scroll position and state alive.
 class StudentShell extends StatefulWidget {
   const StudentShell({super.key});
 

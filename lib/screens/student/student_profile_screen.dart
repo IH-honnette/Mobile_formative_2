@@ -5,8 +5,6 @@ import '../../providers/auth_provider.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/skill_selector.dart';
 
-/// Student profile: identity, skills (the input to matching) and sign-out.
-/// Also reachable as a standalone push from the "add your skills" prompt.
 class StudentProfileScreen extends StatefulWidget {
   final bool standalone;
 

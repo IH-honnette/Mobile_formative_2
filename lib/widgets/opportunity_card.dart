@@ -5,10 +5,6 @@ import '../models/opportunity.dart';
 import '../theme/app_theme.dart';
 import 'startup_avatar.dart';
 
-/// Card used in the discovery feed and bookmarks list.
-///
-/// Shows the skill-match badge when the student has matching skills — the
-/// signal that makes browsing feel personal instead of generic.
 class OpportunityCard extends StatelessWidget {
   final Opportunity opportunity;
   final List<String> studentSkills;

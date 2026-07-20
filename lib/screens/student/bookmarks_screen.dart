@@ -7,9 +7,6 @@ import '../../widgets/empty_state.dart';
 import '../../widgets/opportunity_card.dart';
 import 'opportunity_detail_screen.dart';
 
-/// Saved opportunities. Bookmarks live on the user document, so this list
-/// updates instantly when a bookmark is toggled anywhere in the app —
-/// a clean demonstration of state propagating across screens.
 class BookmarksScreen extends StatelessWidget {
   const BookmarksScreen({super.key});
 

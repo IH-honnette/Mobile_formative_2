@@ -1,10 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-/// Thin wrapper around FirebaseAuth.
-///
-/// Keeps every credential concern in one file: the rest of the app only ever
-/// sees [authStateChanges] and the three actions below. Error codes are
-/// translated here so screens can show human-readable messages.
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -29,7 +24,6 @@ class AuthService {
 
   Future<void> signOut() => _auth.signOut();
 
-  /// Maps Firebase error codes to messages a student user can act on.
   static String readableError(Object error) {
     if (error is FirebaseAuthException) {
       switch (error.code) {

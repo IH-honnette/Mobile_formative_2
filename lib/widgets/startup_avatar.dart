@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
 
-/// Monogram avatar for a startup. Color is derived from the name so each
-/// startup keeps a stable identity without needing image uploads.
 class StartupAvatar extends StatelessWidget {
   final String name;
   final double size;

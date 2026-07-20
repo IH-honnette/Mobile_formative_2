@@ -1,8 +1,5 @@
-// Generated from android/app/google-services.json and
-// ios/Runner/GoogleService-Info.plist for the Firebase project
-// `formative2-42a33`. If you re-run `flutterfire configure`, it is safe
-// for it to overwrite this file.
-//
+
+
 // ignore_for_file: constant_identifier_names
 
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;

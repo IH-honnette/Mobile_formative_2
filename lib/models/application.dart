@@ -1,14 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-/// Pipeline an application moves through. Founders drive the transitions;
-/// students watch them happen in real time on the tracking screen.
 enum ApplicationStatus { submitted, reviewed, accepted, rejected }
 
-/// Document stored at `applications/{id}` in Firestore.
-///
-/// Opportunity title, startup name and student name are denormalized so both
-/// the student's tracking list and the founder's applicant list render from a
-/// single query with no joins.
 class Application {
   final String id;
   final String opportunityId;

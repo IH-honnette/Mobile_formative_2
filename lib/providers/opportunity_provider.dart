@@ -5,9 +5,6 @@ import 'package:flutter/foundation.dart';
 import '../models/opportunity.dart';
 import '../services/opportunity_service.dart';
 
-/// Owns the discovery feed: one live subscription to all open opportunities
-/// plus the student's search/filter/sort state. Screens read [visible] and
-/// never touch Firestore directly.
 class OpportunityProvider extends ChangeNotifier {
   final OpportunityService _service;
 
@@ -37,8 +34,6 @@ class OpportunityProvider extends ChangeNotifier {
   bool get sortByMatch => _sortByMatch;
   List<Opportunity> get all => List.unmodifiable(_all);
 
-  /// The feed after search, category filter and optional match-sorting.
-  /// [studentSkills] comes from AuthProvider at the call site.
   List<Opportunity> visible(List<String> studentSkills) {
     final query = _searchQuery.trim().toLowerCase();
     var list = _all.where((o) {
@@ -79,8 +74,6 @@ class OpportunityProvider extends ChangeNotifier {
     _sortByMatch = !_sortByMatch;
     notifyListeners();
   }
-
-  // --- Founder actions (writes flow back into _all via the stream) ---
 
   Stream<List<Opportunity>> watchByStartup(String startupId) =>
       _service.watchByStartup(startupId);

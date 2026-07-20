@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-/// Role categories a startup can recruit for. Kept as a fixed list so
-/// filtering stays predictable and the UI can render category chips.
 const List<String> kOpportunityCategories = [
   'Software Development',
   'Design',
@@ -13,9 +11,6 @@ const List<String> kOpportunityCategories = [
   'Community Management',
 ];
 
-/// Skills students can tag themselves with and startups can require.
-/// A shared vocabulary keeps skill matching meaningful — free-text skills
-/// would rarely intersect.
 const List<String> kSkillSuggestions = [
   'Flutter',
   'Mobile Development',
@@ -37,11 +32,6 @@ const List<String> kSkillSuggestions = [
   'Public Speaking',
 ];
 
-/// Document stored at `opportunities/{id}` in Firestore.
-///
-/// `startupName` is denormalized from the startup document so opportunity
-/// cards render without an extra read per card — a deliberate Firestore
-/// trade-off (reads are the dominant cost at scale).
 class Opportunity {
   final String id;
   final String startupId;
@@ -73,8 +63,6 @@ class Opportunity {
 
   bool get deadlinePassed => DateTime.now().isAfter(deadline);
 
-  /// How many of the student's skills appear in [requiredSkills].
-  /// Powers the "Matches N of your skills" badge and match-based sorting.
   int matchCount(List<String> studentSkills) {
     final wanted = requiredSkills.map((s) => s.toLowerCase()).toSet();
     return studentSkills.where((s) => wanted.contains(s.toLowerCase())).length;

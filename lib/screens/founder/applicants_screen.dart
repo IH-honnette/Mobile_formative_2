@@ -9,9 +9,6 @@ import '../../theme/app_theme.dart';
 import '../../widgets/empty_state.dart';
 import '../../widgets/status_badge.dart';
 
-/// Every application the startup has received, with the review actions.
-/// A status change here lands on the student's tracking screen in real
-/// time — the flagship demo moment for state synchronization.
 class ApplicantsScreen extends StatelessWidget {
   const ApplicantsScreen({super.key});
 

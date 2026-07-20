@@ -7,13 +7,8 @@ import '../models/app_user.dart';
 import '../services/auth_service.dart';
 import '../services/user_service.dart';
 
-/// Where the session currently stands. AuthGate switches screens off this.
 enum AuthStatus { initializing, unauthenticated, authenticated }
 
-/// Owns the whole session: the FirebaseAuth state AND the matching
-/// `users/{uid}` profile document, stitched together into one stream of
-/// truth. Every screen learns "who is logged in and what is their role"
-/// exclusively from this provider.
 class AuthProvider extends ChangeNotifier {
   final AuthService _authService;
   final UserService _userService;
@@ -48,8 +43,6 @@ class AuthProvider extends ChangeNotifier {
       return;
     }
 
-    // Signed in: follow the profile document live so role changes,
-    // new bookmarks and skill edits propagate to every screen instantly.
     _profileSub = _userService.watchUser(firebaseUser.uid).listen((profile) {
       _appUser = profile;
       _status = AuthStatus.authenticated;
@@ -57,9 +50,6 @@ class AuthProvider extends ChangeNotifier {
     });
   }
 
-  /// Students must register with their ALU email: the platform only makes
-  /// sense inside the campus ecosystem. Founders may sign up with any valid
-  /// email so ventures without ALU addresses can still recruit here.
   static const String allowedDomain = 'alustudent.com';
 
   static final RegExp _emailPattern = RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$');

@@ -17,12 +17,6 @@ Future<void> main() async {
   runApp(const StintApp());
 }
 
-/// Provider wiring for the whole app.
-///
-/// AuthProvider is the root of the graph; the session-scoped providers
-/// (startups, applications) are re-bound through ChangeNotifierProxyProvider
-/// whenever the signed-in user changes, so no screen ever holds state that
-/// belongs to a previous session.
 class StintApp extends StatelessWidget {
   const StintApp({super.key});
 

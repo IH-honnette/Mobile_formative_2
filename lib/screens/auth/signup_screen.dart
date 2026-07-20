@@ -5,10 +5,6 @@ import '../../models/app_user.dart';
 import '../../providers/auth_provider.dart';
 import '../../theme/app_theme.dart';
 
-/// Registration with the two ALU-specific rules baked in:
-/// 1. students must join with an @alustudent.com email (founders may use
-///    any valid email), and
-/// 2. everyone chooses a role up front — the whole app routes on it.
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
@@ -42,7 +38,7 @@ class _SignupScreenState extends State<SignupScreen> {
         password: _passwordController.text,
         role: _role,
       );
-      // AuthGate takes over from here; just unwind this pushed route.
+
       if (mounted) Navigator.of(context).popUntil((r) => r.isFirst);
     } catch (message) {
       if (!mounted) return;

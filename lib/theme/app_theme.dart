@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// Single source of truth for colors, typography and component styling.
-/// Every screen pulls from this theme so the app stays visually consistent.
 class AppTheme {
   AppTheme._();
 
-  // Brand palette — deep navy anchor with a warm coral accent,
-  // echoing ALU's bold identity without copying its exact branding.
   static const Color navy = Color(0xFF16243D);
   static const Color navyLight = Color(0xFF243B5E);
   static const Color coral = Color(0xFFE85D4C);

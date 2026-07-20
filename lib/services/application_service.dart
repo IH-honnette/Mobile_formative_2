@@ -2,12 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/application.dart';
 
-/// Reads and writes `applications/{id}` documents.
 class ApplicationService {
   final CollectionReference<Map<String, dynamic>> _applications =
       FirebaseFirestore.instance.collection('applications');
 
-  /// Everything one student has applied to — the tracking screen.
   Stream<List<Application>> watchByStudent(String studentUid) {
     return _applications
         .where('studentUid', isEqualTo: studentUid)
@@ -19,7 +17,6 @@ class ApplicationService {
     });
   }
 
-  /// Every application a startup has received, across all its postings.
   Stream<List<Application>> watchByStartup(String startupId) {
     return _applications
         .where('startupId', isEqualTo: startupId)
@@ -31,7 +28,6 @@ class ApplicationService {
     });
   }
 
-  /// Guard against duplicate applications to the same opportunity.
   Future<bool> hasApplied(String studentUid, String opportunityId) async {
     final snap = await _applications
         .where('studentUid', isEqualTo: studentUid)

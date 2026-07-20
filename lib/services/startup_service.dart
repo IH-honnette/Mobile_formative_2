@@ -2,13 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/startup.dart';
 
-/// Reads and writes `startups/{id}` documents, including the admin
-/// verification workflow.
 class StartupService {
   final CollectionReference<Map<String, dynamic>> _startups =
       FirebaseFirestore.instance.collection('startups');
 
-  /// The startup owned by a founder (one startup per founder by design).
   Stream<Startup?> watchByOwner(String ownerUid) {
     return _startups
         .where('ownerUid', isEqualTo: ownerUid)
@@ -18,7 +15,6 @@ class StartupService {
             snap.docs.isEmpty ? null : Startup.fromDoc(snap.docs.first));
   }
 
-  /// All startups awaiting review — the admin's work queue.
   Stream<List<Startup>> watchPending() {
     return _startups
         .where('verificationStatus',
@@ -27,7 +23,6 @@ class StartupService {
         .map((snap) => snap.docs.map(Startup.fromDoc).toList());
   }
 
-  /// Every startup, for the admin overview tab.
   Stream<List<Startup>> watchAll() {
     return _startups
         .orderBy('createdAt', descending: true)

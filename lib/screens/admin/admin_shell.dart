@@ -9,10 +9,6 @@ import '../../widgets/empty_state.dart';
 import '../../widgets/startup_avatar.dart';
 import '../../widgets/status_badge.dart';
 
-/// Admin console: the verification queue plus an overview of every startup
-/// on the platform. Admin accounts are created by promoting a user's role
-/// to "admin" directly in the Firebase console — there is deliberately no
-/// in-app path to becoming an admin.
 class AdminShell extends StatefulWidget {
   const AdminShell({super.key});
 

@@ -46,3 +46,7 @@ app.*.map.json
 docs/report/.venv/
 docs/report/node_modules/
 docs/report/package*.json
+
+# never commit video recordings
+*.mov
+*.mp4

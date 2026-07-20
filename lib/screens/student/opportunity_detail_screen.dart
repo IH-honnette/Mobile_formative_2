@@ -10,11 +10,6 @@ import '../../providers/startup_provider.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/startup_avatar.dart';
 
-/// Full opportunity view with the startup's profile and the apply flow.
-///
-/// Watches the opportunity through OpportunityProvider (by id) rather than
-/// taking a snapshot copy, so edits by the founder appear live even while a
-/// student is reading the posting.
 class OpportunityDetailScreen extends StatelessWidget {
   final String opportunityId;
 
@@ -196,8 +191,6 @@ class OpportunityDetailScreen extends StatelessWidget {
   }
 }
 
-/// Startup profile block shown under the posting — students should always
-/// know who they're applying to, including verification status.
 class _StartupCard extends StatelessWidget {
   final String startupId;
 

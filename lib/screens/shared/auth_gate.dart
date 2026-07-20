@@ -9,10 +9,6 @@ import '../auth/login_screen.dart';
 import '../founder/founder_shell.dart';
 import '../student/student_shell.dart';
 
-/// Single routing decision for the whole app: watches AuthProvider and
-/// swaps the visible tree between login, loading and the three role shells.
-/// Because this is driven by provider state, login/logout transitions happen
-/// automatically with no manual navigation calls.
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
 
@@ -27,7 +23,6 @@ class AuthGate extends StatelessWidget {
         return const LoginScreen();
       case AuthStatus.authenticated:
         final user = auth.user;
-        // Signed in but the profile document hasn't arrived yet.
         if (user == null) return const _Splash();
         switch (user.role) {
           case UserRole.student:

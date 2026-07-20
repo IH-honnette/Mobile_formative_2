@@ -14,8 +14,6 @@ const List<String> kCommitments = [
   'Project-based',
 ];
 
-/// Create or edit an opportunity — one form handles both, so validation
-/// rules can never drift between the two paths.
 class PostOpportunityScreen extends StatefulWidget {
   final Startup startup;
   final Opportunity? existing;

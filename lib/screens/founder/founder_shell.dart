@@ -8,9 +8,6 @@ import 'create_startup_screen.dart';
 import 'founder_dashboard_screen.dart';
 import 'startup_profile_screen.dart';
 
-/// Founder experience. Before a startup profile exists the shell shows the
-/// creation flow; afterwards it becomes a three-tab dashboard. The switch
-/// is pure provider state — no manual navigation.
 class FounderShell extends StatefulWidget {
   const FounderShell({super.key});
 

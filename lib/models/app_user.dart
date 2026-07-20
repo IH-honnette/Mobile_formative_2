@@ -1,12 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-/// The three roles a signed-in person can have on Stint.
 enum UserRole { student, founder, admin }
 
-/// Profile document stored at `users/{uid}` in Firestore.
-///
-/// Kept separate from the FirebaseAuth account: Auth handles credentials,
-/// this document holds everything the app needs to render a person.
 class AppUser {
   final String uid;
   final String name;

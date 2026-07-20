@@ -2,14 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/opportunity.dart';
 
-/// Reads and writes `opportunities/{id}` documents.
 class OpportunityService {
   final CollectionReference<Map<String, dynamic>> _opportunities =
       FirebaseFirestore.instance.collection('opportunities');
 
-  /// Every open opportunity, newest first — the student discovery feed.
-  /// Search and category filtering happen client-side in the provider,
-  /// which is fine at campus scale and avoids composite-index sprawl.
   Stream<List<Opportunity>> watchOpen() {
     return _opportunities
         .where('isOpen', isEqualTo: true)
@@ -21,7 +17,6 @@ class OpportunityService {
     });
   }
 
-  /// All postings by one startup — the founder's dashboard list.
   Stream<List<Opportunity>> watchByStartup(String startupId) {
     return _opportunities
         .where('startupId', isEqualTo: startupId)

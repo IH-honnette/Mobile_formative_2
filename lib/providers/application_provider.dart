@@ -7,9 +7,6 @@ import '../models/app_user.dart';
 import '../models/opportunity.dart';
 import '../services/application_service.dart';
 
-/// Application state for the signed-in student, plus the founder-side
-/// actions for reviewing applicants. [bindStudent] is called by
-/// ChangeNotifierProxyProvider whenever the session changes.
 class ApplicationProvider extends ChangeNotifier {
   final ApplicationService _service;
 
@@ -22,8 +19,6 @@ class ApplicationProvider extends ChangeNotifier {
   ApplicationProvider({ApplicationService? service})
       : _service = service ?? ApplicationService();
 
-  /// Re-points the "my applications" subscription at the current student.
-  /// No-op when the same user is still signed in.
   void bindStudent(String uid) {
     if (uid == _boundUid) return;
     _boundUid = uid;
@@ -48,8 +43,6 @@ class ApplicationProvider extends ChangeNotifier {
   bool hasAppliedLocally(String opportunityId) =>
       _mine.any((a) => a.opportunityId == opportunityId);
 
-  /// Submits an application after a duplicate check. Throws a readable
-  /// message on failure so the UI can surface it in a SnackBar.
   Future<void> apply({
     required Opportunity opportunity,
     required AppUser student,
@@ -75,8 +68,6 @@ class ApplicationProvider extends ChangeNotifier {
       updatedAt: now,
     ));
   }
-
-  // --- Founder side ---
 
   Stream<List<Application>> watchByStartup(String startupId) =>
       _service.watchByStartup(startupId);

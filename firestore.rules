@@ -1,10 +1,6 @@
 rules_version = '2';
 
 // Stint security rules.
-//
-// Philosophy: the client is never trusted. Every write is checked against
-// the caller's uid and role, and the verification gate (only verified
-// startups may post) is enforced here, not just in the UI.
 service cloud.firestore {
   match /databases/{database}/documents {
 

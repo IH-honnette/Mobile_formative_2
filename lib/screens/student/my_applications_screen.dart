@@ -9,9 +9,6 @@ import '../../widgets/empty_state.dart';
 import '../../widgets/startup_avatar.dart';
 import '../../widgets/status_badge.dart';
 
-/// Application tracking — the feature that turns "apply and pray" into a
-/// transparent pipeline. Status changes made by founders appear here in
-/// real time through the Firestore stream.
 class MyApplicationsScreen extends StatelessWidget {
   const MyApplicationsScreen({super.key});
 
@@ -84,7 +81,7 @@ class _ApplicationTile extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 14),
-            // Mini pipeline: submitted → reviewed → accepted (or rejected).
+
             Row(
               children: List.generate(_steps.length * 2 - 1, (i) {
                 if (i.isOdd) {

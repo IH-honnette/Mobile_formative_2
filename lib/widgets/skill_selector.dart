@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import '../models/opportunity.dart';
 import '../theme/app_theme.dart';
 
-/// Chip-based skill picker reused in three places: student onboarding,
-/// profile editing and opportunity posting. Selecting from a shared
-/// vocabulary is what makes skill matching work.
 class SkillSelector extends StatelessWidget {
   final List<String> selected;
   final ValueChanged<List<String>> onChanged;

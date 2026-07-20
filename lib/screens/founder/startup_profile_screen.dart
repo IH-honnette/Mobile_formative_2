@@ -7,8 +7,6 @@ import '../../widgets/startup_avatar.dart';
 import '../../widgets/status_badge.dart';
 import 'create_startup_screen.dart' show kSectors, kStages;
 
-/// View and edit the startup profile; shows live verification status and
-/// hosts sign-out for the founder role.
 class StartupProfileScreen extends StatefulWidget {
   const StartupProfileScreen({super.key});
 

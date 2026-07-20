@@ -1,18 +1,22 @@
-# Stint 🚀
+# Stint 
 
 **Where ALU students meet ALU startups.** Stint connects students seeking
 real internship experience with verified student-led ventures inside the ALU
-ecosystem — startups post opportunities, students discover, apply and track
+ecosystem , startups post opportunities, students discover, apply and track
 their applications in real time.
 
 Built with **Flutter + Firebase (Auth + Cloud Firestore)** using **Provider**
 for state management.
 
+## Demo video
+
+▶️ [Watch the demo on YouTube](https://youtu.be/WJG7AXSupt0)
+
 ## The problem
 
 Many ALU students struggle to land internships at established companies, while
 student founders on the same campus need help with development, design,
-marketing, operations and more. Stint bridges that gap — with a trust
+marketing, operations and more. Stint bridges that gap with a trust
 layer: only startups **verified by an admin** can post, so students never
 apply to ghost ventures.
 
@@ -108,7 +112,7 @@ flutter run          # on an emulator or physical device
 
 1. In the app, sign up normally (e.g. `admin.stint@alustudent.com`) as a **Student**.
 2. In Firebase Console → Firestore → `users` → that uid → edit `role` → `admin`.
-3. Hot-restart the app and log in — you land in the admin console. (There is deliberately no in-app path to becoming admin.)
+3. Hot-restart the app and log in, you land in the admin console. (There is deliberately no in-app path to becoming admin.)
 
 ## Testing
 

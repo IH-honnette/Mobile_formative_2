@@ -10,9 +10,6 @@ import '../../widgets/opportunity_card.dart';
 import 'opportunity_detail_screen.dart';
 import 'student_profile_screen.dart';
 
-/// The heart of the student experience: live feed of open opportunities
-/// with search, category filters and skill-match sorting. Everything here
-/// re-renders automatically when Firestore pushes a change.
 class DiscoverScreen extends StatelessWidget {
   const DiscoverScreen({super.key});
 

@@ -12,9 +12,6 @@ const List<String> kSectors = [
 
 const List<String> kStages = ['Idea', 'MVP', 'Early revenue', 'Growing'];
 
-/// One-time onboarding for founders. The created startup enters the
-/// verification queue — founders see a clear explanation of why they
-/// can't post yet.
 class CreateStartupScreen extends StatefulWidget {
   const CreateStartupScreen({super.key});
 
@@ -48,7 +45,6 @@ class _CreateStartupScreenState extends State<CreateStartupScreen> {
             stage: _stage,
             description: _descriptionController.text,
           );
-      // FounderShell flips to the dashboard when the stream emits.
     } catch (_) {
       if (!mounted) return;
       setState(() => _submitting = false);

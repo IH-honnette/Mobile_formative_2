@@ -2,13 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/app_user.dart';
 
-/// Reads and writes `users/{uid}` documents.
 class UserService {
   final CollectionReference<Map<String, dynamic>> _users =
       FirebaseFirestore.instance.collection('users');
 
-  /// Live stream of one user's profile. Emits null until the profile
-  /// document has been created (i.e. mid-onboarding).
   Stream<AppUser?> watchUser(String uid) {
     return _users
         .doc(uid)

@@ -5,12 +5,6 @@ import 'package:flutter/foundation.dart';
 import '../models/startup.dart';
 import '../services/startup_service.dart';
 
-/// Startup state for the signed-in person.
-///
-/// Founder: follows their own startup document (or null before creation).
-/// Admin: follows the pending-verification queue.
-/// [bindSession] is called by ChangeNotifierProxyProvider whenever the
-/// session changes, so subscriptions always track the current user.
 class StartupProvider extends ChangeNotifier {
   final StartupService _service;
 
@@ -25,10 +19,6 @@ class StartupProvider extends ChangeNotifier {
   StartupProvider({StartupService? service})
       : _service = service ?? StartupService();
 
-  /// Re-points the live subscriptions at the current session. No-op when
-  /// nothing changed, so rebuilds never duplicate listeners. The key includes
-  /// the role flags because the profile document (which carries the role)
-  /// arrives a moment after FirebaseAuth reports the uid.
   void bindSession({
     required String uid,
     required bool isFounder,

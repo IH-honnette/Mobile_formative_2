@@ -5,8 +5,6 @@ import '../../providers/auth_provider.dart';
 import '../../theme/app_theme.dart';
 import 'signup_screen.dart';
 
-/// Email + password login. On success AuthGate swaps to the right role
-/// shell automatically — this screen never navigates forward itself.
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 

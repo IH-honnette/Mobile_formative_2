@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
 
-/// Friendly placeholder for empty lists — every list screen uses this
-/// instead of showing a blank page.
 class EmptyState extends StatelessWidget {
   final IconData icon;
   final String title;

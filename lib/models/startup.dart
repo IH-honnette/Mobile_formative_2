@@ -1,13 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-/// Verification lifecycle of a startup profile.
-///
-/// Startups begin as [pending]; an admin moves them to [verified] or
-/// [rejected]. Only verified startups may post opportunities — this is the
-/// trust layer that keeps ghost startups off the platform.
 enum VerificationStatus { pending, verified, rejected }
 
-/// Document stored at `startups/{id}` in Firestore.
 class Startup {
   final String id;
   final String ownerUid;
@@ -31,7 +25,6 @@ class Startup {
 
   bool get isVerified => verificationStatus == VerificationStatus.verified;
 
-  /// Two-letter monogram used for the avatar (e.g. "Kigali Grocers" → "KG").
   String get initials {
     final words = name.trim().split(RegExp(r'\s+'));
     if (words.isEmpty || words.first.isEmpty) return '?';
